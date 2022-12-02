@@ -26,10 +26,30 @@ $ npm run start
 $ docker-compose up
 ```
 
+Адрес сервиса по умолчанию http://localhost:3000
+
 Либо локально (Docker контейнер postgres в это время должен работать):
 ```bash
 $ npm run start
 ```
+
+## Endpoints:
+### Генерация ссылки:
+POST запрос "/" (в корне):
+например, http://localhost:3000
+
+Пример тела запроса:
+```json
+{
+    "link": "https://www.google.com"
+}
+```
+
+### Переход по ссылке с редиректом:
+Просто перейдите по сгенерированной ссылке.
+Это GET запрос в корневой URL, пример:
+http://localhost:3000/f8mTJtg0Z8
+
 
 ## Test
 
