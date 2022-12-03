@@ -26,14 +26,14 @@ export class LinksController {
     @Param() shortLink: GetLinkDto,
     @Response() res,
   ): Promise<void> {
-    const link = await this.linksService.findOneByShortLink(
+    const linkPath = await this.linksService.findOneLinkUrlByShortLink(
       shortLink.shortLink,
     );
 
-    if (link === null) {
+    if (linkPath === null) {
       throw new HttpException('Not found', HttpStatus.NOT_FOUND);
     }
 
-    res.redirect(301, link.link);
+    res.redirect(301, linkPath);
   }
 }

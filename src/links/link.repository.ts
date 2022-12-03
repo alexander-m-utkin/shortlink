@@ -10,10 +10,12 @@ export class LinkRepository extends Repository<Link> {
     super(Link, dataSource.createEntityManager());
   }
 
-  getLinkUrlByShortLink(shortLink: string): Promise<Link> {
-    return this.createQueryBuilder('link')
+  async getLinkUrlByShortLink(shortLink: string): Promise<string | null> {
+    const link =  await this.createQueryBuilder('link')
       .select('link')
       .where('link.shortLink = :shortLink', { shortLink })
       .getOne();
+
+    return link === null ? null : link.link;
   }
 }

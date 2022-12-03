@@ -1,25 +1,18 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-// import { Repository } from 'typeorm';
 import { Link } from './link.entity';
 import { CreateLinkDto } from './dto/create-link.dto';
 import { createHash } from 'crypto';
 import { ConfigService } from '@nestjs/config';
 import { LinkRepository } from './link.repository';
 
-
-
 @Injectable()
 export class LinksService {
   constructor(
-    @InjectRepository(Link)
-    // private linksRepository: Repository<Link>,
     private linksRepository: LinkRepository,
     private config: ConfigService,
   ) {}
 
-  findOneByShortLink(shortLink: string): Promise<Link> {
-    // return this.linksRepository.findOneBy({ shortLink });
+  findOneLinkUrlByShortLink(shortLink: string): Promise<string> {
     return this.linksRepository.getLinkUrlByShortLink(shortLink);
   }
 
