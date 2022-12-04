@@ -33,6 +33,11 @@ $ docker-compose up
 $ npm run start
 ```
 
+## Swagger
+http://localhost:3000/api
+
+Тут можно делать тестовые запросы. См. описание Endpoints ниже.
+
 ## Endpoints:
 ### Генерация ссылки:
 POST запрос "/" (в корне):
